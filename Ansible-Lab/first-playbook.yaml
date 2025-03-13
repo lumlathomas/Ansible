@@ -7,9 +7,16 @@
       yum:
         name: httpd
         state: latest
+
     - name: start web server
       service:
         name: httpd
         state: started
+
+    - name: install tree
+      yum:
+        name: tree  
+        state: latest
+
   #playbook starts with --- ( three dotted lines)
-  
+  # installing two services
