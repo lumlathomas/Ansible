@@ -1,0 +1,36 @@
+
+---
+
+To create an encrypted YAML file using Ansible Vault, run the following command:
+
+```bash
+ansible-vault create secret.yaml
+```
+
+You will be prompted to provide a password. Once the password is set, the file will open in the `vi` editor, where you can add your YAML content. Save and exit the editor (:wq!) to complete the process.
+
+After creation, the file is encrypted, and you won’t be able to read or edit it directly without the password. To modify the encrypted YAML file, use the following command:
+
+```bash
+ansible-vault edit secret.yaml
+```
+
+You will need to enter the password you set earlier to access and edit the file.
+
+If you want to decrypt the file, use:
+
+```bash
+ansible-vault decrypt secret.yaml
+```
+
+You’ll be prompted to enter the password to decrypt the file.
+
+To encrypt the file again for security, run:
+
+```bash
+ansible-vault encrypt secret.yaml
+```
+
+This ensures the file remains secure and protected.
+
+--- 

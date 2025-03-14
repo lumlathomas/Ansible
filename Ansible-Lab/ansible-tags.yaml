@@ -1,0 +1,61 @@
+# TAGS: Used to execute or skip specific tasks in a playbook
+
+- name: First Playbook
+  hosts: all
+  tasks:
+    - name: Install Git
+      yum:
+        name: git
+        state: present
+      tags: install_git
+
+    - name: Install Maven
+      yum:
+        name: maven
+        state: present
+      tags: install_maven
+
+    - name: Create User
+      user:
+        name: test
+        state: present
+      tags: create_user
+
+#Usage Instructions:
+#Run a Single Tag: ansible-playbook name.yml --tags install_git
+#Run Multiple Tags: ansible-playbook name.yml --tags install_maven,create_user
+#Skip a Single Tag: ansible-playbook name.yml --skip-tags create_user
+#Skip Multiple Tags: ansible-playbook name.yml --skip-tags create_user,install_git
+
+
+
+
+
+
+
+# Another TAGS Example: To execute or skip specific tasks
+
+# - name: first playbook
+#   hosts: all
+#   tasks:
+#     - name: installing git
+#       yum:
+#        name: git
+#        state: present
+#       tags: a
+#     - name: installing httpd
+#       yum:
+#         name: maven
+#         state: present
+#       tags: b
+#     - name: create user
+#       user:
+#         name: test
+#         state: present
+#       tags: c    
+
+#SINGLE TAG: ansible-playbook name.yml --tags a
+#MULTI TAG: ansible-playbook name.yml --tags b,c
+#SKIP TAG: ansible-playbook name.yml --skip-tags "c"
+#MULTI SKIP TAGS: ansible-playbook name.yml --skip-tags "c,d"
+

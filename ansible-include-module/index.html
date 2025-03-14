@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansible Include</title>
+</head>
+<body>
+    <h1>Ansible Include</h1>
+    <p>Ansible <code>include</code> is used to modularize and reuse playbooks or tasks.</p>
+
+    <h2>Types of Include</h2>
+    <ul>
+        <li><strong><code>include_tasks</code></strong>: Includes tasks from another file.</li>
+        <li><strong><code>include_playbook</code></strong>: Includes an entire playbook.</li>
+    </ul>
+
+    <h2>Example: <code>include_tasks</code></h2>
+    <pre><code>
+- name: Main Playbook
+  hosts: localhost
+  tasks:
+    - name: Include common tasks
+      include_tasks: common_setup.yml
+    </code></pre>
+
+    <h2>Example: <code>include_playbook</code></h2>
+    <pre><code>
+- name: Main Playbook
+  hosts: localhost
+  tasks:
+    - name: Include another playbook
+      include_playbook: another_playbook.yml
+    </code></pre>
+
+    <h2>Benefits</h2>
+    <ul>
+        <li>Reusability</li>
+        <li>Modularity</li>
+        <li>Maintainability</li>
+        <li>Readability</li>
+    </ul>
+
+    <h2>Run Playbook</h2>
+    <pre><code>ansible-playbook main_playbook.yml</code></pre>
+</body>
+</html>

@@ -1,0 +1,28 @@
+---
+- name: loop playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: install multiple softwares
+      yum:
+        name: "{{item}}"
+        state: latest
+      with_items:
+        - git
+        - tree
+#above  installs both git and tree
+
+
+#another example
+# - name: Create multiple users
+#   hosts: all
+#   become: yes  # Run tasks with elevated privileges (sudo)
+#   tasks:
+#     - name: Ensure users are present
+#       user:
+#         name: "{{ item }}"
+#         state: present
+#       loop:
+#         - alice
+#         - bob
+#         - charlie

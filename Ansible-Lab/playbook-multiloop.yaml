@@ -1,0 +1,32 @@
+---
+- name: loopr playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: install multiple softwares
+      yum:
+        name: "{{item.x}}"
+        state: "{{item.y}}"
+      with_items:
+        - {x: nginx, y: latest}
+        - {x: git, y: absent}
+        - {x: tree, y: latest}
+    - name: start httpd server
+      service:
+        name: "{{item.x}}"
+        state: "{{item.z}}"
+      with_items:
+        - {x: nginx, z: started}
+
+  #above creates nginx and tree and not git
+
+  #another example with multiloop
+
+  # - name: Example of Ansible Multiloop
+  # hosts: localhost
+  # gather_facts: no
+  # tasks:
+  #   - name: Create directories with nested loops
+  #     ansible.builtin.debug:
+  #       msg: "Creating directory {{ item[0] }}/{{ item[1] }}"
+  #     loop: "{{ ['dev', 'prod'] | product(['app', 'logs']) | list }}"
