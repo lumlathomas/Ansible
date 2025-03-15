@@ -1,5 +1,5 @@
 ---
-- name: loopr playbook
+- name: loop playbook
   hosts: all
   become: yes
   tasks:
